@@ -23,8 +23,12 @@ public class ReceiptServiceImpl implements ReceiptService {
 
     @Override
     public void createReceipt(Optional<Order> currentOrder) {
-        List<OrderDetails> orderItemDetails = currentOrder.stream()
-                .flatMap(order -> order.getOrderItems().stream())
+        if (currentOrder.isEmpty()) {
+            return;
+        }
+
+        Order order = currentOrder.get();
+        List<OrderDetails> orderItemDetails = order.getOrderItems().stream()
                 .map(item -> {
                     List<ToppingDetails> toppingDetails = item.getToppings().stream()
                             .map(topping -> new ToppingDetails(topping.getToppingName(), topping.getPrice()))
@@ -44,18 +48,10 @@ public class ReceiptServiceImpl implements ReceiptService {
                 })
                 .collect(Collectors.toList());
 
-        allOrderDetails.addAll(orderItemDetails);
-
-        saveReceiptToFile(orderItemDetails);
-    }
-
-    private void saveReceiptToFile(List<OrderDetails> orderItemDetails) {
-        // Define the directory and file name
-        String directoryPath = "src/Receipts"; // Relative path to the Receipts directory
-        String fileName = allOrderDetails.get(0).getOrderNumber() + "_" + allOrderDetails.get(0).getDate() + "_receipt.txt";
+        String directoryPath = "src/Receipts";
+        String fileName = order.getOrderNumber() + "_" + order.getOrderDate() + "_receipt.txt";
         String filePath = directoryPath + "/" + fileName;
 
-        // Create the directory if it doesn't exist
         File directory = new File(directoryPath);
         if (!directory.exists()) {
             directory.mkdirs();
@@ -71,21 +67,20 @@ public class ReceiptServiceImpl implements ReceiptService {
             writer.write("        +9250000000      \n");
             writer.write("-------------------------------------\n");
 
-            writer.write(" Item Name                  Price   \n");
+            writer.write(String.format("%-30s %10s\n", "Item Name", "Price"));
             writer.write("-------------------------------------\n");
 
             for (OrderDetails orderDetails : orderItemDetails) {
-                writer.write(" " + orderDetails.getOrderItemInfoDetails().getDrinkName() + "                            \n");
-                writer.write("      Toppings:\n");
+                writer.write(String.format("%-25s %10s\n", orderDetails.getOrderItemInfoDetails().getDrinkName(), orderDetails.getOrderItemInfoDetails().getDrinkPrice()));
                 for (ToppingDetails topping : orderDetails.getOrderItemInfoDetails().getToppings()) {
-                    writer.write("          " + topping.getToppingName() + " (" + topping.getPrice() + ")\n");
+                    writer.write(String.format("          %-15s %10s\n", topping.getToppingName(), topping.getPrice()));
                 }
-                writer.write("      " + orderDetails.getTotalPrice() + "\n");
+                writer.write(String.format("      %-25s %10s\n", "Total", orderDetails.getTotalPrice()));
                 totalAmount = totalAmount.add(orderDetails.getTotalPrice());
             }
 
             writer.write("-------------------------------------\n");
-            writer.write(" Total amount:               " + totalAmount + "   \n");
+            writer.write(String.format(" Total amount:                  %10s\n", totalAmount));
 
             writer.write("*************************************\n");
             writer.write("       THANK YOU COME AGAIN            \n");
