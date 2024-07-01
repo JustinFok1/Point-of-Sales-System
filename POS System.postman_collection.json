@@ -1,0 +1,861 @@
+{
+	"info": {
+		"_postman_id": "d196aad6-0f0e-4fb0-aefe-512f4b269d2f",
+		"name": "POS System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36047984"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "CreateAccount",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Justin\",\r\n    \"lastName\": \"Fok\",\r\n    \"email\": \"juto3gmicm\",\r\n    \"password\": \"12345\",\r\n    \"phoneNumber\": \"926-321-3213\",\r\n    \"address\": \"Fake address\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/user/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account Info",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/user/listAllUsers",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"listAllUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXN0aW5mb2szQGdtYWlsLmNvbSIsImlhdCI6MTcxODA3MzA0NiwiZXhwIjoxNzE4MTU5NDQ2fQ.9R5QEeWKG8o59NthcZ4kQqMFFSxgpDhvM7mhrYozWgB8qNj3FOFKlQi5G0nKOfRk9ZIevVnN7PB60hLCSAXieA"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/user/deleteAll",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"deleteAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"juto3@gmicm\",\r\n  \"password\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "CreateCategory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxOTA4NjYxNSwiZXhwIjo4NjQwMDE3MTkwODY2MTV9.0_b_SzyFSNGBxG0qyfzLzHjVcJPM3IvGMQOC3nOs8aE3Tv9Mdo4YYXByaT8oJAQNJVj-b4TJpOcCaP9Vfigl8w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryName\" : \"Fruit Tea\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/categories/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categories",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxODczOTY2NywiZXhwIjoxNzE4ODI2MDY3fQ.vlitLlO5sgITN5kD3eUy2axP6ASdCOCnZcjNCtJFZjhwWMrHqAKl__TAvolCXxWyd9UJFpf9nDKC1cl9vNBuUg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"categoryName\": \"Fruit Tea\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/categories/update/18",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categories",
+								"update",
+								"18"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxODczOTY2NywiZXhwIjoxNzE4ODI2MDY3fQ.vlitLlO5sgITN5kD3eUy2axP6ASdCOCnZcjNCtJFZjhwWMrHqAKl__TAvolCXxWyd9UJFpf9nDKC1cl9vNBuUg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/categories/getAll",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categories",
+								"getAll"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxODMxMTYzMywiZXhwIjoxNzE4Mzk4MDMzfQ.sLt8FPiV2D9LC6MWEuMvPLeLL-__vJH862qTZw7gEkrkZxXbwr1KtjNf0ua-WGutzShCVAXHstG8tfZI6vVS_A",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/categories/get/9",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categories",
+								"get",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxODczOTY2NywiZXhwIjoxNzE4ODI2MDY3fQ.vlitLlO5sgITN5kD3eUy2axP6ASdCOCnZcjNCtJFZjhwWMrHqAKl__TAvolCXxWyd9UJFpf9nDKC1cl9vNBuUg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/categories/delete",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categories",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Drinks",
+			"item": [
+				{
+					"name": "Create Drink",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxOTA4NjYxNSwiZXhwIjo4NjQwMDE3MTkwODY2MTV9.0_b_SzyFSNGBxG0qyfzLzHjVcJPM3IvGMQOC3nOs8aE3Tv9Mdo4YYXByaT8oJAQNJVj-b4TJpOcCaP9Vfigl8w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"drinkName\": \"Black Fruit Tea\",\r\n    \"price\": 5.30,\r\n    \"categoryName\":\"Milk Tea\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/drinks/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"drinks",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Drinks",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxODczOTY2NywiZXhwIjoxNzE4ODI2MDY3fQ.vlitLlO5sgITN5kD3eUy2axP6ASdCOCnZcjNCtJFZjhwWMrHqAKl__TAvolCXxWyd9UJFpf9nDKC1cl9vNBuUg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/drinks/getAllDrinks",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"drinks",
+								"getAllDrinks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Drink By Category",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxOTA4NjYxNSwiZXhwIjo4NjQwMDE3MTkwODY2MTV9.0_b_SzyFSNGBxG0qyfzLzHjVcJPM3IvGMQOC3nOs8aE3Tv9Mdo4YYXByaT8oJAQNJVj-b4TJpOcCaP9Vfigl8w",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/drinks/getDrinksByCategory/Milk Tea",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"drinks",
+								"getDrinksByCategory",
+								"Milk Tea"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Drink Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxOTA4NjYxNSwiZXhwIjo4NjQwMDE3MTkwODY2MTV9.0_b_SzyFSNGBxG0qyfzLzHjVcJPM3IvGMQOC3nOs8aE3Tv9Mdo4YYXByaT8oJAQNJVj-b4TJpOcCaP9Vfigl8w",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/drinks/getDrinksByCategory/Milk Tea",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"drinks",
+								"getDrinksByCategory",
+								"Milk Tea"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Drink",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxODczOTY2NywiZXhwIjoxNzE4ODI2MDY3fQ.vlitLlO5sgITN5kD3eUy2axP6ASdCOCnZcjNCtJFZjhwWMrHqAKl__TAvolCXxWyd9UJFpf9nDKC1cl9vNBuUg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"drinkName\": \"Green Milk Tea\",\r\n    \"price\": 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/drinks/update/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"drinks",
+								"update",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Drink",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxODczOTY2NywiZXhwIjoxNzE4ODI2MDY3fQ.vlitLlO5sgITN5kD3eUy2axP6ASdCOCnZcjNCtJFZjhwWMrHqAKl__TAvolCXxWyd9UJFpf9nDKC1cl9vNBuUg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/drinks/delete",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"drinks",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Toppings",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxODczOTY2NywiZXhwIjoxNzE4ODI2MDY3fQ.vlitLlO5sgITN5kD3eUy2axP6ASdCOCnZcjNCtJFZjhwWMrHqAKl__TAvolCXxWyd9UJFpf9nDKC1cl9vNBuUg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"toppingName\" : \"Boba\",\r\n    \"price\" : 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/toppings/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"toppings",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxODczOTY2NywiZXhwIjoxNzE4ODI2MDY3fQ.vlitLlO5sgITN5kD3eUy2axP6ASdCOCnZcjNCtJFZjhwWMrHqAKl__TAvolCXxWyd9UJFpf9nDKC1cl9vNBuUg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/toppings/delete",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"toppings",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxODczOTY2NywiZXhwIjoxNzE4ODI2MDY3fQ.vlitLlO5sgITN5kD3eUy2axP6ASdCOCnZcjNCtJFZjhwWMrHqAKl__TAvolCXxWyd9UJFpf9nDKC1cl9vNBuUg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"toppingName\" : \"Hi\",\r\n    \"price\" : 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/toppings/update/Boba",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"toppings",
+								"update",
+								"Boba"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxODczOTY2NywiZXhwIjoxNzE4ODI2MDY3fQ.vlitLlO5sgITN5kD3eUy2axP6ASdCOCnZcjNCtJFZjhwWMrHqAKl__TAvolCXxWyd9UJFpf9nDKC1cl9vNBuUg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/toppings/getAll",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"toppings",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Create New Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxOTQzNzA1OSwiZXhwIjoxODA1ODM3MDU5fQ.TUf421eu3640k2LTQwqRyLjaBYS8R09ZJDXI9Z9mLgPD2cp5FVkl0BoM6sPEvuxDs1KM62gH1sVmSE-9HJwEjg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/orders/createNewOrder",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders",
+								"createNewOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Order Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxOTg1OTQ0MywiZXhwIjoxODA2MjU5NDQzfQ.88gB_FH7OJHTAyWdROh92tq6Hv9iCT089gK0ZGFILlylmGiZBtjWrfIlyQE9pQel6_GB_qHuHnwpkUSO2itXwA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryName\": \"Fruit Tea\",\r\n    \"drinkName\": \"T Ice Blend\",\r\n    \"toppingNames\": [\r\n        \"Grass J\",\r\n        \"Bye\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/orders/addToOrder",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders",
+								"addToOrder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete By Order Item Id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxODkyNjI1OSwiZXhwIjoxNzE5MDEyNjU5fQ.6CTXIbOfwDIPtECtrEyFa0p4C51GHNr4Oft82Y6lMz_9oUt7GJmpPLHtFJle5h3DpHSwjC3EYU_P0iYlXViZfA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/orders/delete/7",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders",
+								"delete",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete All Orders",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxOTAwMDg0NiwiZXhwIjo4NjQwMDE3MTkwMDA4NDZ9.XrWzSF9gBkR94AjJIJrtkFXFAEee5DduCCxTfuBCpD7mpUBOpPxbGFAuwuW6x4VIkKu1LkMh-sJeTZGHhaCtQA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orderNumber\": 90,\r\n    \"orderDate\": \"2024-06-20\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/orders/deleteAllOrders",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders",
+								"deleteAllOrders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Customer Info",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxOTM1MDg3OCwiZXhwIjo4NjQwMDE3MTkzNTA4Nzh9.ag-wP5LZYLy2_H6Abcr6oGMi5itYf_3V4mFX6ucztXpqTEXahAzmvDEKrccU5TVVQJ9WUrtZRn6OX68DcYrkYQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerName\":\"Bob\",\r\n    \"phoneNumber\": 9233222321\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/orders/setCustomerInfo",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders",
+								"setCustomerInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order Items by Order NumberAndDate",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxOTg1OTQ0MywiZXhwIjoxODA2MjU5NDQzfQ.88gB_FH7OJHTAyWdROh92tq6Hv9iCT089gK0ZGFILlylmGiZBtjWrfIlyQE9pQel6_GB_qHuHnwpkUSO2itXwA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orderNumber\": 2,\r\n    \"orderDate\": \"2024-06-21\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/orders/getOrderByOrderNumberAndDate",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders",
+								"getOrderByOrderNumberAndDate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order Items by Order NumberAndDate Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxOTM1MDg3OCwiZXhwIjo4NjQwMDE3MTkzNTA4Nzh9.ag-wP5LZYLy2_H6Abcr6oGMi5itYf_3V4mFX6ucztXpqTEXahAzmvDEKrccU5TVVQJ9WUrtZRn6OX68DcYrkYQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"customerName\":\"Bob\",\r\n    \"phoneNumber\": 9233222321\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/orders/getOrderByCustomerInfo",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders",
+								"getOrderByCustomerInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Checkout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdXRvM0BnbWljbSIsImlhdCI6MTcxOTg1OTQ0MywiZXhwIjoxODA2MjU5NDQzfQ.88gB_FH7OJHTAyWdROh92tq6Hv9iCT089gK0ZGFILlylmGiZBtjWrfIlyQE9pQel6_GB_qHuHnwpkUSO2itXwA",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"tok_visa\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/orders/checkout",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"orders",
+								"checkout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
