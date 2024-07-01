@@ -27,6 +27,8 @@ public class OrderServiceImpl implements OrderService {
     OrderRepo orderRepo;
     @Autowired
     StripeService stripeService;
+    @Autowired
+    ReceiptService receiptService;
 
     @Override
     public OrderResponse createNewOrder() {
@@ -238,11 +240,13 @@ public class OrderServiceImpl implements OrderService {
                     .build();
         }
 
+        Long totalPriceInCents = currentOrder.get().getTotalPrice().longValue() * 100;
+        stripeService.createStripePaymentIntent(totalPriceInCents);
+
         currentOrder.get().setStatus(OrderStatus.COMPLETED);
         orderRepo.save(currentOrder.get());
 
-        Long totalPriceInCents = currentOrder.get().getTotalPrice().longValue() * 100;
-        stripeService.createStripePaymentIntent(totalPriceInCents);
+        receiptService.createReceipt(currentOrder);
 
         return CheckoutResponse.builder()
                 .responseCode(Messages.SUCCESS_CODE)
