@@ -1,7 +1,6 @@
 package com.PosSystem.POS.System.Dao;
 
 import com.PosSystem.POS.System.Entity.Order;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -16,6 +15,7 @@ public interface OrderRepo  extends JpaRepository<Order, Long> {
     Optional<Order> findByOrderItemsId(Long orderItemId);
     List<Order> findByCustomerNameAndPhoneNumber(String customerName, String phoneNumber);
     Optional<Order> findByOrderNumber(Integer orderNumber);
+    Optional<Order> findByOrderNumberAndOrderDate(Integer orderNum, LocalDate date);
     Boolean existsByOrderNumberAndOrderDate(Integer orderNumber, LocalDate orderDate);
 
 

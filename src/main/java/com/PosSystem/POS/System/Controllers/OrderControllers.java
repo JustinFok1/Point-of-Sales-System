@@ -5,6 +5,7 @@ import com.PosSystem.POS.System.Service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
 @RestController
 @RequestMapping("/orders")
 public class OrderControllers {
@@ -28,7 +29,7 @@ public class OrderControllers {
         return orderService.setCustomerInfo(customerInfoDetails);
     }
     @GetMapping("/getOrderByOrderNumberAndDate")
-    OrderResponse getOrderByOrderNumber(@RequestBody OrderDetailByNumberAndDate order){
+    OrderResponse getOrderByOrderNumber(@RequestBody OrderDetailByNumberAndDateDTO order){
         return orderService.getOrderByOrderNumberAndDate(order);
     }
     @GetMapping("/getOrderByCustomerInfo")

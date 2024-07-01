@@ -148,18 +148,19 @@ public class OrderServiceImpl implements OrderService {
                 .orderDetails(customerItems)
                 .build();
     }
-    public OrderResponse getOrderByOrderNumberAndDate(Optional<OrderDetailByNumberAndDate> order, Optional<CustomerInfoDetails> customerInfoDetails) {
-        List<OrderItem> orderItems = orderItemRepo.findByOrderOrderNumberAndOrderOrderDate(order.getOrderNumber(), LocalDate.parse(order.getOrderDate()));
+    public OrderResponse getOrderByOrderNumberAndDate(OrderDetailByNumberAndDateDTO orderDetails) {
+        Optional<Order> foundOrder = orderRepo.findByOrderNumberAndOrderDate(orderDetails.getOrderNumber(), LocalDate.parse(orderDetails.getOrderDate()));
 
-        if (orderItems.isEmpty()) {
+        if (foundOrder.isEmpty()) {
             return OrderResponse.builder()
                     .responseCode(Messages.DOES_NOT_EXIST_CODE)
                     .responseMessage(Messages.DOES_NOT_EXIST_MESSAGE)
-                    .orderNumber(order.getOrderNumber())
+                    .orderNumber(orderDetails.getOrderNumber())
                     .build();
         }
 
-        List<OrderDetails> orderDetails = orderItems.stream()
+        List<OrderDetails> orderItemDetails = foundOrder.stream()
+                .flatMap(order -> order.getOrderItems().stream())
                 .map(item -> {
                     List<ToppingDetails> toppingDetails = item.getToppings().stream()
                             .map(topping -> new ToppingDetails(topping.getToppingName(), topping.getPrice()))
@@ -179,10 +180,10 @@ public class OrderServiceImpl implements OrderService {
                 .collect(Collectors.toList());
 
         return OrderResponse.builder()
-                .orderNumber(order.getOrderNumber())
+                .orderNumber(orderDetails.getOrderNumber())
                 .responseCode(Messages.SUCCESS_CODE)
                 .responseMessage(Messages.SUCCESS_MESSAGE)
-                .orderDetails(orderDetails)
+                .orderDetails(orderItemDetails)
                 .build();
     }
 
@@ -248,7 +249,9 @@ public class OrderServiceImpl implements OrderService {
                 .responseMessage(Messages.SUCCESS_MESSAGE)
                 .build();
     }
-    private List<Order> findOrder(Optional<OrderDetailByNumberAndDate> orderDetailByNumberAndDate ,Optional<CustomerInfoDetails> customerInfoDetails){
-        List<Order> findOrder = orderRepo
-    }
+   /* private List<Order> findOrder(Optional<OrderDetailByNumberAndDate> orderDetailByNumberAndDate ,Optional<CustomerInfoDetails> customerInfoDetails){
+        if(orderDetailByNumberAndDate.isPresent()) {
+            List<Order> findOrder = orderRepo.findBy
+        }
+    }*/
 }
