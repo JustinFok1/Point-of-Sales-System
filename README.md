@@ -10,7 +10,7 @@
 
 ###
 
-<p align="left">## Features<br><br>- **Order Management** : Create, read, update, and delete orders.<br>- **Payment Processing**: Integrated with Stripe for secure payment transactions.<br>- **Customer Management**: Handle customer information efficiently.<br><br>## Getting Started<br><br>
+<p align="left">## Features<br><br>- Order Management : Create, read, update, and delete orders.<br>- Payment Processing: Integrated with Stripe for secure payment transactions.<br>- Customer Management: Handle customer information efficiently.<br><br>## Getting Started<br><br>
 ### Prerequisites<br><br>- Java 11 or higher<br>- Maven<br>- MySQL<br><br>
 ### Installation<br><br>1. Clone the repository:<br>   ```bash<br>   git clone https://github.com/JustinFok1/POS-System-Public.git<br>   cd POS-System-Public</p>
 
